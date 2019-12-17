@@ -1,0 +1,20 @@
+{
+    "name": "taskspanel",
+    "version": "1.0.0",
+    "description": "",
+    "main": "",
+    "scripts": {
+        "frontend": "cd frontend && node app.js",
+        "backend":  "св backend  && node app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gistrec/TasksPanel.git"
+    },
+    "author": "gistrec",
+    "license": "UNLICENSED",
+    "bugs": {
+        "url": "https://github.com/gistrec/TasksPanel/issues"
+    },
+    "homepage": "https://github.com/gistrec/TasksPanel#readme"
+}
