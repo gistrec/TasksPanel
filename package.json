@@ -9,16 +9,26 @@
     },
     "repository": {
         "type": "git",
-        "url":  "git+https://github.com/gistrec/TasksPanel.git"
+        "url": "git+https://github.com/gistrec/TasksPanel.git"
     },
-    "author":  "gistrec",
+    "author": "gistrec",
     "license": "UNLICENSED",
     "bugs": {
         "url": "https://github.com/gistrec/TasksPanel/issues"
     },
     "homepage": "https://github.com/gistrec/TasksPanel#readme",
     "dependencies": {
-        "colors":  "^1.4.0",
+        "body-parser": "^1.19.0",
+        "colors": "^1.4.0",
+        "cookie-parser": "^1.4.4",
+        "ejs": "^3.0.1",
+        "express": "^4.17.1",
+        "express-mysql-session": "^2.1.0",
+        "express-session": "^1.17.0",
+        "md5": "^2.2.1",
+        "mysql": "^2.17.1",
+        "passport": "^0.4.1",
+        "passport-local": "^1.0.0",
         "winston": "^3.2.1"
     }
 }
