@@ -6,7 +6,7 @@ const db     = require('./index.js');
  * @param login - логин
  */
 exports.getByLogin = async function(login) {
-    const data = await db.async_query('SELECT login, password FROM users WHERE login = ?', login);
+    const data = await db.async_query('SELECT id, login, password FROM users WHERE login = ?', login);
 
     logger.debug(`[db/users] Получение информации о пользователе ${login}`);
 

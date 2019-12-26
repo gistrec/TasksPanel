@@ -45,5 +45,6 @@ exports.async_query = function(query, params = []) {
 exports.db = db;
 
 exports.users = require('./users.js'); // Пользователи на сайте
+exports.tasks = require('./tasks.js'); // Пользователи на сайте
 
 exports.sessionStore = require('./session-store.js');

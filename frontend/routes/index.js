@@ -15,8 +15,10 @@ router.use(bodyParser.urlencoded({   // To support URL-encoded bodies
 }));
 
 
+
 /** HTTP request handlers */
 router.use('/login', require('./login.js'));
+router.use('/tasks', require('./tasks.js'));
 
 /** Logout request */
 router.get('/logout', function(req, res) {

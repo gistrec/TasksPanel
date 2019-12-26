@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900' rel='stylesheet' type='text/css'>
+
+    <!-- Page title -->
+    <title>TasksPanel</title>
+
+    <!-- Vendor styles -->
+    <link rel="stylesheet" href="vendor\fontawesome\css\font-awesome.css">
+    <link rel="stylesheet" href="vendor\animate.css\animate.css">
+    <link rel="stylesheet" href="vendor\bootstrap\css\bootstrap.css">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="styles\pe-icons\pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="styles\pe-icons\helper.css">
+    <link rel="stylesheet" href="styles\stroke-icons\style.css">
+    <link rel="stylesheet" href="styles\style.css">
+</head>
+<body>
+
+<!-- Wrapper-->
+<div class="wrapper">
+
+    <!-- Header-->
+    <%- include('header', { user }); %>
+    <!-- End header-->
+
+    <!-- Navigation-->
+    <%- include('navigation', { user, page: 'tasks' }); %>
+    <!-- End navigation-->
+
+    <!-- Main content-->
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="view-header">
+                        <div class="pull-right text-right" style="line-height: 14px">
+                            <small>App Pages<br>Basic<br> <span class="c-white">Projects</span></small>
+                        </div>
+                        <div class="header-icon">
+                            <i class="pe page-header-icon pe-7s-box1"></i>
+                        </div>
+                        <div class="header-title">
+                            <h3>Мои задачи</h3>
+                            <small>
+                                Список запущенных вами задач
+                            </small>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="panel panel-filled">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="input-group m-b-xs m-t-xs">
+                                        <input class="form-control" type="text" placeholder="Поиск по названию.." style="width: 100%">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-default"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <select class="form-control m-b-xs m-t-xs" name="account" style="width: 100%">
+                                        <option selected="">Статус задачи
+                                        <option>Ожидание
+                                        <option>Выполняется
+                                        <option>Выполнена
+                                        <option>Ошибка
+                                    </select>
+                                </div>
+                                <div class="col-lg-3">
+                                    <select class="form-control m-t-xs" name="account" style="width: 100%">
+                                        <option selected="">Сортировать:
+                                        <option>Дата создания
+                                        <option>Статус
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                            <table class="table table-vertical-align-middle">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        Статус
+                                    </th>
+                                    <th>
+                                        Название задачи
+                                    </th>
+                                    <th>
+                                        Прогресс
+                                    </th>
+                                    <th class="text-right">
+                                        Действия
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% for (task of tasks) { %>
+                                    <tr>
+                                        <td>
+                                            <% switch (task.status) {
+                                                case 1 : %>
+                                                    <span class="label label-accent">Ожидание</span>
+                                                <% break;
+                                                case 2 : %>
+                                                    <span class="label label-info">Выполняется</span>
+                                                <% break;
+                                                case 3 : %>
+                                                    <span class="label label-success">Выполнена</span>
+                                                <% break;
+                                                case 4 : %>
+                                                    <span class="label label-danger">Ошибка</span>
+                                                <% break;
+                                            } %>
+                                        </td>
+                                        <td>
+                                            <a href="#"><%= task.name %></a>
+                                            <div class="small"><i class="fa fa-clock-o"></i> Создана <%= task.date %> <span class="c-white"><%= task.time %></span></div>
+                                        </td>
+                                        <td>
+                                            <div class="progress m-b-none full progress-small">
+                                                <div style="width: 35%" class="progress-bar progress-bar-warning"></div>
+                                            </div>
+                                            <small>35% завершено</small>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group pull-right">
+                                                <button class="btn btn-default btn-xs"><i class="fa fa-folder"></i> Просмотр </button>
+                                                <button class="btn btn-default btn-xs"><i class="fa fa-sticky-note"></i> Заметка </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <% } %>
+                                </tbody>
+                            </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="pull-left">
+                    <span>Показаны задачи с <a id="from">1</a> по <a id="to">7</a> из <a>7</a></span>
+                </div>
+                <div class="pull-right">
+                    <ul id="pagination" class="pagination pagination-sm" style="margin: 2px 10px">
+                        <li><a onclick="changePage('prev')">Назад</a></li>
+                        <li><a onclick="changePage('next')">Вперед</a></li>
+                    </ul>
+                </div>
+                <form class="form-inline pull-right">
+                    <span>Задач на странице&nbsp;</span>
+                    <select id="count" class="form-control">
+                        <option>10</option>
+                        <option>25</option>
+                        <option>50</option>
+                        <option>100</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- End main content-->
+
+</div>
+<!-- End wrapper-->
+
+<!-- Vendor scripts -->
+<script src="vendor\pacejs\pace.min.js"></script>
+<script src="vendor\jquery\dist\jquery.min.js"></script>
+<script src="vendor\bootstrap\js\bootstrap.min.js"></script>
+
+<!-- App scripts -->
+<script src="scripts\luna.js"></script>
+
+</body>
+
+</html>
