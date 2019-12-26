@@ -58,8 +58,6 @@
                 </div>
             </div>
 
-
-
             <div class="row">
                 <div class="col-md-12">
 
@@ -145,8 +143,8 @@
                                         </td>
                                         <td>
                                             <div class="btn-group pull-right">
-                                                <button class="btn btn-default btn-xs"><i class="fa fa-folder"></i> Просмотр </button>
-                                                <button class="btn btn-default btn-xs"><i class="fa fa-sticky-note"></i> Заметка </button>
+                                                <button id="show" class="btn btn-default btn-xs"><i class="fa fa-folder"></i> Просмотр </button>
+                                                <button id="" class="btn btn-default btn-xs"><i class="fa fa-sticky-note"></i> Заметка </button>
                                             </div>
                                         </td>
                                     </tr>
@@ -158,6 +156,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="row">
                 <div class="pull-left">
                     <span>Показаны задачи с <a id="from">1</a> по <a id="to">7</a> из <a>7</a></span>
@@ -182,6 +181,68 @@
     </section>
     <!-- End main content-->
 
+    <!-- Modal window -->
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title">Информация о задаче <a>LDU разложение 2</a></h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr><th>Основные данные</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Статус</td>
+                                <td class="text-right">Выполняется</td>
+                            </tr>
+                            <tr>
+                                <td>Прогресс</td>
+                                <td class="text-right">60%</td>
+                            </tr>
+                            <tr>
+                                <td>Программа</td>
+                                <td class="text-right"><a>[Пример] Решение СЛАУ</a></td>
+                            </tr>
+                            <tr>
+                                <td>Создана</td>
+                                <td class="text-right">25.12.2019 <span class="c-white">10:38</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="m-t-none">Входные данные</h4>
+                    <p>Файл 1: <a>Матрица A</a></p>
+                    <p>Файл 2: <a>Вектор правой части b</a></p>
+                    <p>Минимальная точность: 1e-7</p>
+
+                    <hr>
+
+                    <h4 class="m-t-none">Процесс работы</h4>
+                    <div class="row">
+                        <div class="col-sm-6"><h5 class="m-t-xs">Невязка</h5></div>
+                        <div class="col-sm-6 text-right"><samll id="discrepancy"> 4,453.69 </samll></div>
+                    </div>
+                    <div class="flot-chart-analytics">
+                        <div class="flot-chart-content" id="metric5"></div>
+                    </div>
+
+                    <hr>
+                    <h4 class="m-t-none">Выходные данные</h4>
+                    <small>Программа еще работает</small>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-danger">Остановить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End modal window -->
+
 </div>
 <!-- End wrapper-->
 
@@ -189,9 +250,71 @@
 <script src="vendor\pacejs\pace.min.js"></script>
 <script src="vendor\jquery\dist\jquery.min.js"></script>
 <script src="vendor\bootstrap\js\bootstrap.min.js"></script>
+<script src="vendor\flot\jquery.flot.min.js"></script>
+<script src="vendor\flot\jquery.flot.resize.min.js"></script>
 
 <!-- App scripts -->
 <script src="scripts\luna.js"></script>
+
+<script>
+$('#show').click(function( event ) {
+    event.preventDefault();
+    $('#modal').modal('show');
+});
+
+$(document).ready(function () {
+    // Set total point for generated data
+    var data = [];
+    var totalPoints = 300;
+
+    // Function for generation data
+    function getRandomData() {
+        if (data.length > 0) data = data.slice(1);
+
+        while (data.length < totalPoints) {
+            var prev = data.length > 0 ? data[data.length - 1] : 50;
+            var y    = prev + Math.random() * 10 - 5.6;
+
+            if (y < 0) y = 0;
+            if (y > 100) y = 100;
+
+            data.push(y);
+        }
+
+        var res = [];
+        for (var i = 0; i < data.length; ++i) res.push([i, data[i]])
+
+        return res;
+    }
+
+    // Charts option
+    var chartUsersOptions2 = {
+        lines: {
+            show: true,
+            fill: false,
+            lineWidth: 2
+        },
+        yaxis: {
+            min: 0, max: 100, tickSize: 20
+        },
+        grid: {
+            tickColor: "#484C5A",
+            borderWidth: 0
+        }
+    };
+
+    var plot5 = $.plot($("#metric5"), [getRandomData()], chartUsersOptions2);
+
+    function update() {
+        plot5.setData([getRandomData()]);
+        plot5.draw();
+        setTimeout(update, 120);
+    }
+
+    // Run update method
+    update();
+});
+</script>
 
 </body>
 
