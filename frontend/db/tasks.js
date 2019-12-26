@@ -28,14 +28,15 @@ exports.get = async function(user_id, count = 10, offset = 0) {
  * @column {DATETIME} start   - время создания задачи
  */
 exports.init = async function() {
-    const sql = "CREATE TABLE `taskspanel`.`tasks` (                            \
-                    `id`      INT         NOT NULL  AUTO_INCREMENT,             \
-                    `user`    VARCHAR(20) NOT NULL,                             \
-                    `name`    VARCHAR(50) NOT NULL,                             \
-                    `program` VARCHAR(45) NOT NULL,                             \
-                    `start`   DATETIME    NOT NULL  DEFAULT CURRENT_TIMESTAMP,  \
-                    PRIMARY KEY (`id`),                                         \
-                    UNIQUE INDEX `id_UNIQUE` (`id` ASC)                         \
+    const sql = "CREATE TABLE `tasks` (                                                                     \
+                    `id` int(11) NOT NULL AUTO_INCREMENT,                                                   \
+                    `user_id` int(11) NOT NULL,                                                             \
+                    `status` int(1) NOT NULL COMMENT '0 - Wait, 1 - Running, 2 - Completed, 3 - Failed',    \
+                    `name` varchar(60) CHARACTER SET utf8 NOT NULL,                                         \
+                    `program` varchar(45) CHARACTER SET latin1 NOT NULL,                                    \
+                    `start` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,                                    \
+                    PRIMARY KEY (`id`),                                                                     \
+                    UNIQUE KEY `id_UNIQUE` (`id`)                                                           \
                 )"
 
     await db.async_query(sql);
