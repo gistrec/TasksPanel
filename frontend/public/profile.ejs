@@ -1,0 +1,274 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900' rel='stylesheet' type='text/css'>
+
+    <!-- Page title -->
+    <title>TasksPanel</title>
+
+    <!-- Vendor styles -->
+    <link rel="stylesheet" href="vendor\fontawesome\css\font-awesome.css">
+    <link rel="stylesheet" href="vendor\animate.css\animate.css">
+    <link rel="stylesheet" href="vendor\bootstrap\css\bootstrap.css">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="styles\pe-icons\pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="styles\pe-icons\helper.css">
+    <link rel="stylesheet" href="styles\stroke-icons\style.css">
+    <link rel="stylesheet" href="styles\style.css">
+</head>
+<body>
+
+<!-- Wrapper-->
+<div class="wrapper">
+
+    <!-- Header-->
+    <%- include('header', { user }); %>
+    <!-- End header-->
+
+    <!-- Navigation-->
+    <%- include('navigation', { user, page: 'profile' }); %>
+    <!-- End navigation-->
+
+    <!-- Main content-->
+    <div class="content">
+        <div class="container-fluid">
+
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="view-header">
+                            <div class="pull-right text-right" style="line-height: 14px">
+                                <small>App Pages<br>Main<br> <span class="c-white">Profile</span></small>
+                            </div>
+                            <div class="header-icon">
+                                <i class="pe page-header-icon pe-7s-users"></i>
+                            </div>
+                            <div class="header-title">
+                                <h3>Пользователь: <%= user.login %></h3>
+                                <small>
+                                    Основная информация о вашем аккаунте и смена даных
+                                </small>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="panel panel-filled">
+                        <div class="panel-body">
+                            <h4>Последняя активность</h4>
+
+                            <div class="v-timeline vertical-container">
+                                <div class="vertical-timeline-block">
+                                    <div class="vertical-timeline-icon">
+                                        <i class="fa fa-file"></i>
+                                    </div>
+                                    <div class="vertical-timeline-content" style="background-color: rgba(68, 70, 79, 1)">
+                                        <div class="p-sm">
+                                            <span class="vertical-date pull-right"> <small>1 день назад</small> </span>
+                                            <h2>Создание задачи #7</h2>
+                                            <p>Задача <a>[Пример] Решение СЛАУ</a> была создана</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vertical-timeline-block">
+                                    <div class="vertical-timeline-icon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="vertical-timeline-content" style="background-color: rgba(68, 70, 79, 1)">
+                                        <div class="p-sm">
+                                            <span class="vertical-date pull-right"> <small>2 дня назад</small> </span>
+                                            <h2>Изменение пароля</h2>
+                                            <p>Пароль для входа в аккаунт был изменен</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vertical-timeline-block">
+                                    <div class="vertical-timeline-icon">
+                                        <i class="fa fa-file"></i>
+                                    </div>
+                                    <div class="vertical-timeline-content" style="background-color: rgba(68, 70, 79, 1)">
+                                        <div class="p-sm">
+                                            <span class="vertical-date pull-right"> <small>2 дня назад</small> </span>
+                                            <h2>Создание задачи #6</h2>
+                                            <p>Задача <a>[Пример] Решение СЛАУ</a> была создана</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vertical-timeline-block">
+                                    <div class="vertical-timeline-icon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="vertical-timeline-content" style="background-color: rgba(68, 70, 79, 1)">
+                                        <div class="p-sm">
+                                            <span class="vertical-date pull-right"> <small>3 недели назад</small> </span>
+                                            <h2>Создание аккаунта</h2>
+                                            <p>Аккаунт был создан</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="col-md-6">
+                    <div class="panel panel-filled">
+                        <div class="panel-heading">
+                            <h4>Ваши данные</h4>
+                        </div>
+                        <div class="panel-body" style="padding: 30px 15px 15px 15px">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="login" class="col-sm-2 control-label">Логин</label>
+                                    <div class="col-sm-8">
+                                        <input type="password" class="form-control" id="login" placeholder="<%= user.login %>" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">Почта</label>
+                                    <div class="col-sm-8">
+                                        <input type="email" class="form-control" id="mail" placeholder="a.kovalko@outlook.com">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-sm-2 control-label">Пароль</label>
+                                    <div class="col-sm-8">
+                                        <input type="password" class="form-control" id="password" placeholder="Новый пароль">
+                                    </div>
+                                </div>
+                                <p class="text-center">Для изменения данных введите старый пароль</p>
+                                <div class="form-group">
+                                    <label for="repeat" class="col-sm-2 control-label">Пароль</label>
+                                    <div class="col-sm-8">
+                                        <input type="password" class="form-control" id="repeat" placeholder="Введите старый пароль">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="text-center">
+                                <a class="btn btn-w-md btn-accent" onclick="applyChange();">Изменить</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-filled">
+                        <div class="panel-heading">
+                            <h4> Выйти из аккаунта </h4>
+                        </div>
+                        <div class="panel-body">
+                            <!-- <p>Тут можно придумать стремный текст</p> -->
+                            <div class="text-center">
+                                <a class="btn btn-w-md btn-accent" href="/logout">Выйти</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="panel panel-filled">
+
+                        <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-md-3 col-xs-6 text-center">
+                                    <h2 class="no-margins">
+                                        7
+                                    </h2>
+                                    <span class="c-white">Задач</span> создано
+                                </div>
+                                <div class="col-md-3 col-xs-6 text-center">
+                                    <h2 class="no-margins">
+                                        Nan
+                                    </h2>
+                                    <span class="c-white">TODO</span> gists
+                                </div>
+                                <div class="col-md-3 col-xs-6 text-center">
+                                    <h2 class="no-margins">
+                                        Nan
+                                    </h2>
+                                    <span class="c-white">TODO</span> line
+                                </div>
+                                <div class="col-md-3 col-xs-6 text-center">
+                                    <h2 class="no-margins">
+                                        Nan
+                                    </h2>
+                                    <span class="c-white">TODO</span> builds
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- End main content-->
+
+</div>
+<!-- End wrapper-->
+
+<!-- Vendor scripts -->
+<script src="vendor\pacejs\pace.min.js"></script>
+<script src="vendor\jquery\dist\jquery.min.js"></script>
+<script src="vendor\bootstrap\js\bootstrap.min.js"></script>
+<script src="vendor\flot\jquery.flot.min.js"></script>
+<script src="vendor\flot\jquery.flot.resize.min.js"></script>
+<script src="vendor\flot\jquery.flot.spline.js"></script>
+
+<!-- App scripts -->
+<script src="scripts\luna.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+
+        var data = [
+            {
+                data: [ [1, 4], [2, 5], [3, 7], [4, 4], [5, 8], [6, 9],[7, 11], [8, 10], [9, 8], [10, 5], [11, 4], [12, 3] ]
+            }
+        ];
+
+        var chartUsersOptions2 = {
+            series: {
+                splines: {
+                    show: true,
+                    tension: 0.4,
+                    lineWidth: 2,
+                    fill: false
+                },
+            },
+            legend: {
+                show: false
+            },
+            grid: {
+                borderWidth: 0
+            }
+        };
+
+        $.plot($("#flotProfile"), data, chartUsersOptions2);
+
+    });
+</script>
+
+</body>
+
+</html>
