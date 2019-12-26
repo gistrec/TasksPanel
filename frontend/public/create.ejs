@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png"/>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900' rel='stylesheet' type='text/css'>
+
+    <!-- Page title -->
+    <title>TasksPanel</title>
+
+    <!-- Vendor styles -->
+    <link rel="stylesheet" href="vendor\fontawesome\css\font-awesome.css">
+    <link rel="stylesheet" href="vendor\animate.css\animate.css">
+    <link rel="stylesheet" href="vendor\bootstrap\css\bootstrap.css">
+    <link rel="stylesheet" href="vendor\select2\dist\css\select2.min.css">
+    <link rel="stylesheet" href="vendor\toastr\toastr.min.css">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="styles\pe-icons\pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="styles\pe-icons\helper.css">
+    <link rel="stylesheet" href="styles\stroke-icons\style.css">
+    <link rel="stylesheet" href="styles\style.css">
+</head>
+<body>
+
+<!-- Wrapper-->
+<div class="wrapper">
+
+    <!-- Header-->
+    <%- include('header', {user}); %>
+    <!-- End header-->
+
+    <!-- Navigation-->
+    <%- include('navigation', {user, page: 'create'}); %>
+    <!-- End navigation-->
+
+
+    <!-- Main content-->
+    <section class="content">
+        <div class="container-fluid">
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="view-header">
+                        <div class="pull-right text-right" style="line-height: 14px">
+                            <small>App Pages<br>Main<br> <span class="c-white">Create</span></small>
+                        </div>
+                        <div class="header-icon">
+                            <i class="pe page-header-icon pe-7s-note2"></i>
+                        </div>
+                        <div class="header-title">
+                            <h3>Создать задачу</h3>
+                            <small>
+                                Создание задачи с необходимыми параметрами
+                            </small>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-filled">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label class="control-label" for="programs">Программа</label>
+                                <select id="programs" class="form-control" style="width: 100%">
+                                    <option value="Test">[Пример] Решение СЛАУ
+                                    <option value="Test">[Пример] Сумма чисел в файле
+                                </select>
+                            </div>
+
+                            <hr>
+                            <h5>Описание программы</h5>
+                            <p class="bs-example">
+                                Программа решает уравнение вида Ax=b<br>
+                                Выходные данные:<br>
+                                &nbsp;&nbsp;* Матрица A<br>
+                                &nbsp;&nbsp;* Вектор правой части b<br>
+                            </p>
+
+                            <div class="form-group">
+                                <p>Матрица A</p>
+                                <label class="btn btn-accent" for="file-selector2">
+                                    <input id="file-selector2" type="file" style="display:none;" onchange="$('#upload-file-info2').html($(this).val());">
+                                    <span id="upload-file-info2">Загрузить файл</span>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Вектор правой части b</p>
+                                <label class="btn btn-accent" for="file-selector2">
+                                    <input id="file-selector2" type="file" style="display:none;" onchange="$('#upload-file-info2').html($(this).val());">
+                                    <span id="upload-file-info2">Загрузить файл</span>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <p>Минимальная точность</p>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <input id="comment_count" type="number" class="form-control" placeholder="1e-6">
+                                    </div>
+                                    <div class="col-lg-6 ml-auto" style="height: 34px; padding-top: 7px">
+                                        Минимум <a>1e-16</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <a id="create" class="btn btn-w-md btn-accent" style="align: center">Создать задачу</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="panel panel-filled">
+                        <div class="panel-heading">
+                            <h4>Инструкция</h4>
+                        </div>
+                        <div id="info" class="panel-body">
+                            <p>
+                                1. Выберите программу, которую нужно запустить<br/>
+                                Например <code>Решение СЛАУ</code><br/>
+                                или <code>[Пример] Сумма чисел в файле</code>
+                            </p>
+                            <p>
+                                2. Заполните входные данные для программы<br/>
+                                Файлы и/или аргументы командной строки</p>
+                            <p>4. Нажмите на кнопку "Создать задачу"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End main content-->
+</div>
+<!-- End wrapper-->
+
+<!-- Vendor scripts -->
+<script src="vendor\pacejs\pace.min.js"></script>
+<script src="vendor\jquery\dist\jquery.min.js"></script>
+<script src="vendor\bootstrap\js\bootstrap.min.js"></script>
+<script src="vendor\select2\dist\js\select2.js"></script>
+<script src="vendor\toastr\toastr.min.js"></script>
+
+<!-- App scripts -->
+<script>
+    $("#programs").select2();
+</script>
+
+<script src="scripts\luna.js"></script>
+
+</body>
+
+</html>
