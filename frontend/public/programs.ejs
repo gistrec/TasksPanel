@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900' rel='stylesheet' type='text/css'>
+
+    <!-- Page title -->
+    <title>TasksPanel</title>
+
+    <!-- Vendor styles -->
+    <link rel="stylesheet" href="vendor\fontawesome\css\font-awesome.css">
+    <link rel="stylesheet" href="vendor\animate.css\animate.css">
+    <link rel="stylesheet" href="vendor\bootstrap\css\bootstrap.css">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="styles\pe-icons\pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="styles\pe-icons\helper.css">
+    <link rel="stylesheet" href="styles\stroke-icons\style.css">
+    <link rel="stylesheet" href="styles\style.css">
+
+</head>
+<body class="fixed-navigation">
+
+<!-- Wrapper-->
+<div class="wrapper">
+
+    <!-- Header-->
+    <%- include('header', { user }); %>
+    <!-- End header-->
+
+    <!-- Navigation-->
+    <%- include('navigation', { user, page: 'programs' }); %>
+    <!-- End navigation-->
+
+    <!-- Main content-->
+    <section class="content">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="view-header">
+                        <div class="pull-right text-right" style="line-height: 14px">
+                            <small>App Pages<br>Main<br> <span class="c-white">Programs</span></small>
+                        </div>
+                        <div class="header-icon">
+                            <i class="pe page-header-icon pe-7s-bookmarks"></i>
+                        </div>
+                        <div class="header-title">
+                            <h3>Программы</h3>
+                            <small>
+                                Список программ, доступных для запуска
+                            </small>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-filled">
+                        <div class="panel-body">
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="input-group m-b-xs">
+                                        <input class="form-control" type="text" placeholder="Поиск по названию.." style="width: 100%">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-default"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <select class="form-control" name="account" style="width: 100%">
+                                        <option selected="">Выбор предметной области
+                                        <option>Физика
+                                        <option>Численные методы
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="panel panel-filled ">
+                        <div class="panel-body">
+                            <div class="btn-group pull-right m-b-md">
+                                <button class="btn btn-default btn-xs">Показать</button>
+                                <button class="btn btn-default btn-xs">Создать задачу</button>
+                            </div>
+                            <h5 class="m-b-none"><a href="">[Пример] Решение СЛАУ</a></h5>
+
+                            <div class="m-b-xs c-white small">Численные методы</div>
+                            <p>
+                                Программа решает уравнение вида Ax=b<br>
+                                Выходные данные:<br>
+                                &nbsp;&nbsp;* Файл 1: Матрица A<br>
+                                &nbsp;&nbsp;* Файл 2: Вектор правой части b<br>
+                            </p>
+                            <small><i class="fa fa-clock-o"></i> Последнее обновление: 24.11.2019</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-filled ">
+                        <div class="panel-body">
+                            <div class="btn-group pull-right m-b-md">
+                                <button class="btn btn-default btn-xs">Показать</button>
+                                <button class="btn btn-default btn-xs">Создать задачу</button>
+                            </div>
+                            <h5 class="m-b-none"><a href="">[Пример] Сумма чисел в файле</a></h5>
+
+                            <div class="m-b-xs c-white small">Численные методы</div>
+                            <p>
+                                Программа суммирует все числа в файле<br>
+                                Выходные данные:<br>
+                                &nbsp;&nbsp;* Файл 1: Набор чисел<br>
+                            </p>
+                            <small><i class="fa fa-clock-o"></i> Последнее обновление: 05.11.2019</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="pull-right">
+                <ul class="pagination">
+                <li class="disabled">
+                    <a href="#">Назад</a>
+                </li>
+                <li class="active">
+                    <a href="#">1</a>
+                    </li>
+                <!-- <li>
+                    <a href="#">2</a>
+                </li>
+                <li>
+                    <a href="#">3</a>
+                </li> -->
+                <li class="disabled">
+                    <a href="#">Вперед</a>
+                </li>
+            </ul>
+            </div>
+
+        </div>
+    </section>
+    <!-- End main content-->
+
+</div>
+<!-- End wrapper-->
+
+<!-- Vendor scripts -->
+<script src="vendor\pacejs\pace.min.js"></script>
+<script src="vendor\jquery\dist\jquery.min.js"></script>
+<script src="vendor\bootstrap\js\bootstrap.min.js"></script>
+
+<!-- App scripts -->
+<script src="scripts\luna.js"></script>
+
+</body>
+
+</html>
