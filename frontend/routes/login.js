@@ -25,7 +25,6 @@ router.post("/", function(req, res, next) {
         return res.send("Invalid credentials");
     }
     passport.authenticate("local", function(err, user, info) {
-        console.log(err, user, info)
         if (err) {
             console.log(err)
             return next(err);

@@ -27,8 +27,8 @@ router.get('/logout', function(req, res) {
 });
 
 /** Request for an unknown page */
-router.use(function(req, res) {
-	res.redirect('/login');
+router.use('*', function(req, res) {
+	//res.redirect('/login');
 })
 
 module.exports = router

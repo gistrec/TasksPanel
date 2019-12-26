@@ -9,11 +9,11 @@ const logger  = require('./utils/logger.js');
 app.set('view engine', 'ejs');
 app.set('views', require('path').join(__dirname, '/public'));
 
-/** Authorization */
-app.use(require('./utils/authorization.js'));
-
 /** Handler for static files */
 app.use(express.static('public'))
+
+/** Authorization */
+app.use(require('./utils/authorization.js'));
 
 /** Handler for HTTP requests */
 app.use(require('./routes'));
